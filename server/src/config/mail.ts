@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
         html: html, 
       });
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         logger.error({type:"Email Error" ,error})
     }
   }

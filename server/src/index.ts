@@ -15,10 +15,17 @@ app.set("views", path.resolve(__dirname, "./views"));
 
 app.get('/',async(req:Request,res:Response)=>{
     const html  = await ejs.renderFile(__dirname+`/views/emails/welcome.ejs`,{name:"Devansh Rai"});
-    await sendMail("YOUR_EMAIL","Testing SMTP",html);
-    return res.send("Email sent successfully");
+    // await sendMail("YOUR_EMAIL","Testing SMTP",html);
     // return res.send("Hey how are you!!!");
+    await emailQueue.add(emailQueueName,{to:"raianupam2023@gmail.com", subject:"Testing Queues",html:html});
+
+    return res.send("Email sent successfully!!");
+    // res.send("Hello World!");
 });
+
+// Queues
+// import {testQueue,testQueueName} from "./jobs/TestQueue.js";
+import { emailQueue, emailQueueName } from "./jobs/EmailQueue.js";
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on PORT ${PORT}`)
