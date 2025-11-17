@@ -1,6 +1,7 @@
 import { ConnectionOptions, DefaultJobOptions } from "bullmq";
 import IORedis from "ioredis";
 
+
 // export const redisConnection:ConnectionOptions = {
 //     host: process.env.REDIS_HOST,
 //     port: 6379,
@@ -11,8 +12,8 @@ import IORedis from "ioredis";
 export const redisConnection: ConnectionOptions = new IORedis.default({
   host: process.env.REDIS_HOST,
   port: 6379,
-  maxLoadingRetryTime: null,
-  maxRetriesPerRequest: null,
+  maxLoadingRetryTime: null as unknown as number,
+  maxRetriesPerRequest: null as unknown as number,
 });
 
 export const defaultQueueConfig: DefaultJobOptions = {
