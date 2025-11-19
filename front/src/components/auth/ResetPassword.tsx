@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "../common/SubmitBtn";
-import { useFormState } from "react-dom";
+// import { useFormState } from "react-dom";
+import {useActionState} from "react";
 import { resetPasswordAction } from "@/app/actions/authActions";
 import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
@@ -16,7 +17,8 @@ export default function ResetPassword() {
     errors: {},
   };
   const sParams = useSearchParams();
-  const [state, formAction] = useFormState(resetPasswordAction, initialState);
+    // const [state, formAction] = useFormState(resetPasswordAction, initialState);
+  const [state, formAction] = useActionState(resetPasswordAction, initialState);
   const router = useRouter();
   useEffect(() => {
     if (state.status === 500) {

@@ -3,10 +3,11 @@ import React, { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "../common/SubmitBtn";
-import { useFormState } from "react-dom";
+// import { useFormState } from "react-dom";
+import {useActionState} from "react";
 import { forgotPasswordAction } from "@/app/actions/authActions";
 import { toast } from "sonner";
-import Link from "next/link";
+// import Link from "next/link";
 
 export default function ForgotPassword() {
   const initialState = {
@@ -14,7 +15,8 @@ export default function ForgotPassword() {
     status: 0,
     errors: {},
   };
-  const [state, formAction] = useFormState(forgotPasswordAction, initialState);
+  // const [state, formAction] = useFormState(forgotPasswordAction, initialState);
+  const [state, formAction] = useActionState(forgotPasswordAction, initialState);
 
   useEffect(() => {
     if (state.status === 500) {

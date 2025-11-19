@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "../common/SubmitBtn";
-import { useFormState } from "react-dom";
+// import { useFormState } from "react-dom";
+import {useActionState} from "react";
 import { loginAction, registerAction } from "@/app/actions/authActions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -15,10 +16,11 @@ export default function Register() {
     status: 0,
     errors: {},
   };
-  const [state, formAction] = useFormState(registerAction, initialState);
+  // const [state, formAction] = useFormState(registerAction, initialState);
+  const [state, formAction] = useActionState(registerAction, initialState);
 
   useEffect(() => {
-    if (state.status === 404) {
+    if (state.status === 500) {
       toast.error(state.message);
     } else if (state.status === 200) {
       toast.success(state.message);

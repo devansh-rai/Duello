@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SubmitButton } from "../common/SubmitBtn";
-import { useFormState } from "react-dom";
+// import { useFormState } from "react-dom";
+import {useActionState} from "react";
 import { loginAction } from "@/app/actions/authActions";
 import { toast } from "sonner";
 import { signIn } from "next-auth/react";
@@ -16,7 +17,8 @@ export default function Login() {
     errors: {},
     data: {},
   };
-  const [state, formAction] = useFormState(loginAction, initialState);
+  // const [state, formAction] = useFormState(loginAction, initialState);
+  const [state, formAction] = useActionState(loginAction, initialState);
 
   useEffect(() => {
     if (state.status === 500) {

@@ -1,16 +1,9 @@
-import React from 'react'
-import { Button } from "@/components/ui/button"
+import HeroSection from "@/components/base/HeroSection";
 
-function App() {
+export default function Home() {
   return (
-    <div className='bg-red-200 h-screen'>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <br></br>
-      <Button>Click me</Button>
+    <div>
+      <HeroSection />
     </div>
-  )
+  );
 }
-
-export default App
