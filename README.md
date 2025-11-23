@@ -116,7 +116,7 @@ cd server
 npm run dev
 
 # Start Frontend:
-cd client
+cd front
 npm run dev
 ```
 
